@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section id="content" class="body">
+    <article class="hentry">
+        <header>
+            <h2><a href="{% url post post.id %}" rel="bookmark" title="Permalink to this {{post.title}}">{{ post.title}}</a></h2>
+        </header>
+        <footer class="post-info"> <abbr class="published" title="{{ post.published }}">{{ post.published }}</abbr>
+        </footer>
+        <div class="entry-content">
+            {{ post.content|safe }}
+        </div>
+    </article>
+</section>
+{% endblock %}
