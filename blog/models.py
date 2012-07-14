@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
+from django.db.models import permalink
 
 DRAFT = 1
 PUBLISHED = 2
@@ -28,3 +29,7 @@ class Post(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    @permalink
+    def get_absolute_url(self):
+        return ('post', (), {'pk': self.id, 'slug': self.slug})

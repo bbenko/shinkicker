@@ -9,11 +9,11 @@
         <li>
             <article class="hentry">
                 <header>
-                    <a href="{% url post post.id %}" rel="bookmark" title="Permalink to this {{post.title}}">{{ post.title}}</a>
+                    <a href="{{ post.get_absolute_url }}" rel="bookmark" title="Permalink to this {{post.title}}">{{ post.title}}</a>
                 </header>
                 <footer class="post-info"> <abbr class="published" title="{{ post.published }}">{{ post.published }}</abbr>
                 </footer>
-                <div class="entry-content">{{ post.content|slice:':200'|safe }} <a href="{% url post post.id %}">...</a></div>
+                <div class="entry-content">{{ post.content|slice:':200'|safe }} <a href="{{ post.get_absolute_url }}">...</a></div>
             </article>
         </li>
     </ol>

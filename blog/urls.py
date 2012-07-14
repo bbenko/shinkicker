@@ -6,6 +6,7 @@ from models import PUBLISHED
 
 urlpatterns = patterns('',
                        url(r'^$', ListView.as_view(queryset=Post.objects.filter(status=PUBLISHED)[:3]), name="home"),
-                       url(r'^$', ListView.as_view(queryset=Post.objects.filter(status=PUBLISHED)[3:]), name="archive"),
-                       url(r'^(?P<pk>\d+)$', PostDetailView.as_view(model=Post), name="post"),
+                       url(r'^archive/$', ListView.as_view(queryset=Post.objects.filter(status=PUBLISHED)[3:]), name="archive"),
+                       url(r'^post/(?P<pk>\d+)/$', PostDetailView.as_view(model=Post), name="post_without_slug"),
+                       url(r'^post/(?P<pk>\d+)/(?P<slug>[-\w]+)/$', PostDetailView.as_view(model=Post), name="post"),
 )
